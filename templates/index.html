@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenido a la Naturaleza | Flask App</title>
+    <title>Bienvenido a la Naturaleza Azul | Flask App</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,15 +14,15 @@
 
     <style>
         :root {
-            --bg-gradient: linear-gradient(135deg, #0b2b1a 0%, #1b4332 40%, #2d6a4f 100%);
+            --bg-gradient: linear-gradient(135deg, #0a1a33 0%, #123a63 40%, #1d5fa3 100%);
             --card-bg: rgba(255, 255, 255, 0.08);
-            --card-border: rgba(255, 255, 255, 0.15);
-            --primary-light: #d8f3dc;
-            --accent-sage: #95d5b2;
-            --accent-green: #52b788;
-            --accent-gold: #e9c46a;
-            --text-main: #f8f9fa;
-            --text-sub: #b7e4c7;
+            --card-border: rgba(255, 255, 255, 0.18);
+            --primary-light: #e8f1fb;
+            --accent-sage: #a8d0f0;
+            --accent-green: #4a90d9;
+            --accent-gold: #ffffff;
+            --text-main: #ffffff;
+            --text-sub: #cfe3f7;
         }
 
         * {
@@ -100,11 +100,11 @@
             align-items: center;
             width: 96px;
             height: 96px;
-            background: linear-gradient(135deg, rgba(82, 183, 136, 0.2), rgba(149, 213, 178, 0.4));
-            border: 1px solid rgba(149, 213, 178, 0.4);
+            background: linear-gradient(135deg, rgba(74, 144, 217, 0.2), rgba(168, 208, 240, 0.4));
+            border: 1px solid rgba(168, 208, 240, 0.4);
             border-radius: 50%;
             margin-bottom: 24px;
-            box-shadow: 0 10px 25px rgba(82, 183, 136, 0.25);
+            box-shadow: 0 10px 25px rgba(74, 144, 217, 0.25);
             transition: transform 0.4s ease;
         }
 
@@ -190,7 +190,7 @@
             align-items: center;
             gap: 8px;
             padding: 8px 18px;
-            background: rgba(45, 106, 79, 0.6);
+            background: rgba(29, 95, 163, 0.6);
             border: 1px solid var(--accent-green);
             border-radius: 50px;
             font-size: 0.88rem;
@@ -211,18 +211,122 @@
         @keyframes pulse {
             0% {
                 transform: scale(0.95);
-                box-shadow: 0 0 0 0 rgba(82, 183, 136, 0.7);
+                box-shadow: 0 0 0 0 rgba(74, 144, 217, 0.7);
             }
 
             70% {
                 transform: scale(1);
-                box-shadow: 0 0 0 8px rgba(82, 183, 136, 0);
+                box-shadow: 0 0 0 8px rgba(74, 144, 217, 0);
             }
 
             100% {
                 transform: scale(0.95);
-                box-shadow: 0 0 0 0 rgba(82, 183, 136, 0);
+                box-shadow: 0 0 0 0 rgba(74, 144, 217, 0);
             }
+        }
+
+        /* Quiz */
+        .quiz-section {
+            margin-top: 50px;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 32px;
+        }
+
+        .quiz-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 24px;
+            color: var(--primary-light);
+        }
+
+        .quiz-question {
+            margin-bottom: 26px;
+        }
+
+        .quiz-question p.q-text {
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+
+        .quiz-option:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: var(--accent-green);
+        }
+
+        .quiz-option input {
+            accent-color: var(--accent-green);
+        }
+
+        .quiz-option.selected {
+            border-color: var(--accent-green);
+            background: rgba(74, 144, 217, 0.2);
+            color: var(--text-main);
+        }
+
+        .quiz-option.correct {
+            border-color: #4ade80;
+            background: rgba(74, 222, 128, 0.18);
+            color: var(--text-main);
+        }
+
+        .quiz-option.incorrect {
+            border-color: #f87171;
+            background: rgba(248, 113, 113, 0.18);
+            color: var(--text-main);
+        }
+
+        .quiz-btn {
+            display: block;
+            margin: 20px auto 0 auto;
+            padding: 12px 32px;
+            background: linear-gradient(135deg, var(--accent-green), #2c6cb0);
+            border: none;
+            border-radius: 50px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .quiz-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(74, 144, 217, 0.35);
+        }
+
+        .quiz-result {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-light);
+            display: none;
         }
 
         /* Responsivo */
@@ -246,14 +350,14 @@
 
     <!-- SVG Fondo Decorativo 1: Hojas -->
     <svg class="bg-shape bg-shape-1" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <path fill="#52B788"
+        <path fill="#4A90D9"
             d="M44.7,-67.6C56.9,-58.5,65.1,-44.6,70.7,-29.9C76.3,-15.1,79.2,0.6,76.5,15.6C73.8,30.6,65.4,45,53.8,55.3C42.2,65.6,27.3,71.8,11.5,73.6C-4.3,75.4,-21.1,72.7,-35.8,65.1C-50.5,57.5,-63.1,45,-70.6,29.9C-78.1,14.8,-80.5,-2.9,-76.3,-19C-72.1,-35.1,-61.3,-49.6,-47.5,-58.4C-33.7,-67.2,-16.9,-70.3,-0.1,-70.2C16.6,-70.1,32.5,-76.7,44.7,-67.6Z"
             transform="translate(100 100)" />
     </svg>
 
     <!-- SVG Fondo Decorativo 2: Montañas/Ramas -->
     <svg class="bg-shape bg-shape-2" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <path fill="#74C69D"
+        <path fill="#A8D0F0"
             d="M38.1,-52.3C49.7,-43.8,60,-32.8,65.2,-19.4C70.4,-6.1,70.4,9.6,64.8,23.3C59.2,37,47.9,48.7,34.7,56.7C21.4,64.7,6.3,69,-9.2,70.3C-24.7,71.6,-40.5,69.9,-52.8,61.4C-65.1,52.8,-73.8,37.3,-76.2,20.8C-78.6,4.3,-74.6,-13.3,-66.1,-27.8C-57.6,-42.3,-44.5,-53.8,-30.7,-61.2C-16.9,-68.5,-2.4,-71.7,10.6,-68C23.6,-64.3,26.5,-60.8,38.1,-52.3Z"
             transform="translate(100 100)" />
     </svg>
@@ -275,9 +379,9 @@
         </div>
 
         <!-- Título Principal Centrado y Grande -->
-        <h1>¡Bienvenido a la Experiencia Flask!</h1>
-        <p class="subtitle">Tu aplicación en Python está lista, conectada y lista para florecer en un entorno armónico
-            con los colores de la naturaleza.</p>
+        <h1>¡Bienvenido a la Experiencia Azul!</h1>
+        <p class="subtitle">Tu aplicación en Python está lista, conectada y lista para fluir en un entorno sereno con
+            los tonos del cielo y el mar.</p>
 
         <!-- Cuadrícula con SVGs Ilustrativos -->
         <div class="features-grid">
@@ -288,8 +392,8 @@
                     <path
                         d="M17,8C8,10 59,16.17 3.82,21.34L5.23,22.75C11.4,17.58 14,9 17,8M12.43,15.58C12.12,14.6 11.5,13.62 10.5,12.75C8.16,10.68 4.79,10.29 2,11C2.5,13.88 3.5,17 6.5,18.88C8.13,19.9 9.89,20 11.38,19.62L12.43,15.58M17,3C12,3 8.44,6.25 7.08,9.77C9.37,9.75 11.83,10.5 13.75,12.2C15.67,13.9 16.5,16.32 16.29,18.61C19.68,16.94 22,13.2 22,8.5C22,5.4 19.5,3 17,3Z" />
                 </svg>
-                <h3>Diseño Orgánico</h3>
-                <p>Estilos inspirados en bosques, vegetación y paletas armónicas relajantes.</p>
+                <h3>Diseño Sereno</h3>
+                <p>Estilos inspirados en el cielo, el mar y paletas armónicas y relajantes.</p>
             </div>
 
             <!-- Tarjeta 2: Montaña / Solidez -->
@@ -308,12 +412,105 @@
                 </svg>
                 <h3>Fluidez Visual</h3>
                 <p>Efectos modernos de cristal, sombras suaves e interacciones responsivas.</p>
-
             </div>
 
         </div>
-        <p align="center">Creado por Feibert Alirio Guzmán Pérez</p>
+
+        <!-- Quiz Interactivo -->
+        <div class="quiz-section">
+            <p class="quiz-title">🧠 Quiz Rápido de Flask</p>
+
+            <form id="quizForm">
+                <div class="quiz-question" data-question="1">
+                    <p class="q-text">1. ¿En qué lenguaje de programación está escrito Flask?</p>
+                    <div class="quiz-options">
+                        <label class="quiz-option"><input type="radio" name="q1" value="wrong"> JavaScript</label>
+                        <label class="quiz-option"><input type="radio" name="q1" value="correct"> Python</label>
+                        <label class="quiz-option"><input type="radio" name="q1" value="wrong"> Java</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-question="2">
+                    <p class="q-text">2. ¿Qué función se usa para renderizar una plantilla HTML en Flask?</p>
+                    <div class="quiz-options">
+                        <label class="quiz-option"><input type="radio" name="q2" value="wrong"> load_html()</label>
+                        <label class="quiz-option"><input type="radio" name="q2" value="correct"> render_template()</label>
+                        <label class="quiz-option"><input type="radio" name="q2" value="wrong"> show_page()</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-question="3">
+                    <p class="q-text">3. ¿Para qué sirve un entorno virtual (venv) en Python?</p>
+                    <div class="quiz-options">
+                        <label class="quiz-option"><input type="radio" name="q3" value="wrong"> Para acelerar el
+                            procesador</label>
+                        <label class="quiz-option"><input type="radio" name="q3" value="correct"> Para aislar las
+                            dependencias de cada proyecto</label>
+                        <label class="quiz-option"><input type="radio" name="q3" value="wrong"> Para diseñar
+                            interfaces gráficas</label>
+                    </div>
+                </div>
+
+                <button type="button" class="quiz-btn" onclick="checkQuiz()">Ver resultado</button>
+                <p id="quizResult" class="quiz-result"></p>
+            </form>
+        </div>
+
+        <p align="center" style="margin-top: 30px;">Creado por Cesar Ocampo Raigosa</p>
     </div>
+
+    <script>
+        // Marca visualmente la opción seleccionada
+        document.querySelectorAll('.quiz-option').forEach(function (label) {
+            label.addEventListener('click', function () {
+                var name = label.querySelector('input').name;
+                document.querySelectorAll('input[name="' + name + '"]').forEach(function (input) {
+                    input.closest('.quiz-option').classList.remove('selected');
+                });
+                label.classList.add('selected');
+            });
+        });
+
+        function checkQuiz() {
+            var questions = ['q1', 'q2', 'q3'];
+            var score = 0;
+            var answered = 0;
+
+            questions.forEach(function (name) {
+                var selected = document.querySelector('input[name="' + name + '"]:checked');
+                var options = document.querySelectorAll('input[name="' + name + '"]');
+
+                if (selected) {
+                    answered++;
+                    options.forEach(function (opt) {
+                        var label = opt.closest('.quiz-option');
+                        label.classList.remove('correct', 'incorrect');
+                        if (opt.value === 'correct') {
+                            label.classList.add('correct');
+                        } else if (opt.checked && opt.value === 'wrong') {
+                            label.classList.add('incorrect');
+                        }
+                    });
+                    if (selected.value === 'correct') score++;
+                } else {
+                    options.forEach(function (opt) {
+                        if (opt.value === 'correct') {
+                            opt.closest('.quiz-option').classList.add('correct');
+                        }
+                    });
+                }
+            });
+
+            var resultEl = document.getElementById('quizResult');
+            resultEl.style.display = 'block';
+
+            if (answered < questions.length) {
+                resultEl.textContent = 'Responde las 3 preguntas para ver tu puntaje. Llevas ' + score + '/' + questions.length + ' correctas.';
+            } else {
+                resultEl.textContent = '¡Obtuviste ' + score + ' de ' + questions.length + ' respuestas correctas!';
+            }
+        }
+    </script>
 
 </body>
 
