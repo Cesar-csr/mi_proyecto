@@ -1,0 +1,22 @@
+<<<<<<< HEAD
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+if __name__ == '__main__':
+=======
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+if __name__ == '__main__':
+>>>>>>> 8864a9a (Commit: Proyecto Flask en tonos lila con Quiz)
+    app.run(debug=True)
